@@ -4,7 +4,7 @@
 <style>
 .register{
     padding-top: 20px;
-    background:url('../assets/images/login.jpg') no-repeat  fixed center  ;
+    background:url('./images/login.jpg') no-repeat  fixed center  ;
     background-size: cover;
     background-position: center;
     -webkit-background-size:cover;
@@ -25,7 +25,7 @@
 .card-body{
 
     width:  380px;
-    height: 670px;
+    height: 500px;
     background-color: rgb(2,2,2,0.6);
     border:border-box;
     border-radius: 10px;
@@ -72,12 +72,21 @@ label{
     height: 40px;
     margin-left: 60px;
 
+
   
 }
 .btn-primary {
     width:50%;
     height: 40px;
+    background: #af3838;
+    margin-top:50px;
+
     
+
+}
+.btn-primary:hover {
+    background: red;
+
 
 }
 .btn {
@@ -136,14 +145,15 @@ a {
                         <img src="{{ url('../assets/images/avat.png')}}" class="avatar">
 
                         <div class="card-body">
-                            <form method="POST" action="{{ route('register') }}">
+                            <form method="POST" action="{{ url('users/'.$User->id)}}">
+                                <input type="hidden" name="_method" value="PUT">
                                 @csrf
                                 <h1>Create An Account </h1>
 
                                 <label for="name">{{ __('Name') }}</label>
 
 
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" placeholder="Enter Name.." value="{{ old('name') }}" required autocomplete="name" autofocus>
+                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" placeholder="Enter Name.." value="{{ $User->name}}" required autocomplete="name" autofocus>
 
                                 @error('name')
                                 <span class="invalid-feedback" role="alert">
@@ -152,10 +162,10 @@ a {
                                 @enderror
 
 
-                                <label for="Phone">{{ __('Phone') }}</label>
+                                <label for="phone">{{ __('Phone') }}</label>
 
 
-                                <input id="Phone" type="int" class="form-control @error('phone') is-invalid @enderror" name="Phone"placeholder="Enter Phone.." value="{{ old('Phone') }}" required autocomplete="Phone" autofocus>
+                                <input id="Phone" type="int" class="form-control @error('Phone') is-invalid @enderror" name="Phone"placeholder="Enter Phone.." value="{{ $User->Phone}}" required autocomplete="phone" autofocus>
 
                                 @error('Phone')
                                 <span class="invalid-feedback" role="alert">
@@ -169,38 +179,16 @@ a {
                                 <label for="email">{{ __('E-Mail Address') }}</label>
 
 
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" placeholder="Enter Email-Adress.." value="{{ old('email') }}" required autocomplete="email">
+                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" placeholder="Enter Email-Adress.." value="{{ $User->email}}" required autocomplete="email">
 
-                                @error('email')
-                                <span class="invalid-feedback" role="alert">
-                                    {{ $message }}
-                                </span>
-                                @enderror
+                                
 
 
-                                <label for="password">{{ __('Password') }}</label>
-
-
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" placeholder="Enter Password.." required autocomplete="new-password">
-
-                                @error('password')
-                                <span class="invalid-feedback" role="alert">
-                                    {{ $message }}
-                                </span>
-                                @enderror
-
-
-
-                                <label for="password-confirm">{{ __('Confirm Password') }}</label>
-
-
-                                <input id="password-confirm" type="password" class="form-control" placeholder="Confirm Password.." name="password_confirmation" required autocomplete="new-password">
-
-                                <br><br>
+                               
                                 <div class="form-group row mb-0">
                                     
                                         <button type="submit" class="btn btn-primary">
-                                            {{ __('Submit') }}
+                                            {{ __('Modify') }}
                                         </button>
 
                                     

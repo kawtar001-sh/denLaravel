@@ -23,3 +23,23 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('accueil', function () {
     return view('accueil');
 });
+
+Route::resource('/users','App\Http\Controllers\UserController');
+
+Route::resource('/appointments','App\Http\Controllers\AppointmentController');
+/*
+Route::get('appointments','App\Http\Controllers\AppointmentController@list_appointments');
+
+Route::post('appointments','App\Http\Controllers\AppointmentController@store');
+
+Route::get('appointments/{id}/edit','App\Http\Controllers\AppointmentController@edit');
+
+Route::put('appointments/{id}','App\Http\Controllers\AppointmentController@update');
+
+Route::delete('appointments/{id}','App\Http\Controllers\AppointmentController@destroy');
+
+Route::get('/about', function () {
+    return view('about');
+});*/
+
+
